@@ -6,37 +6,40 @@ public class Exercicio_java
 {
     public static void main(String[] args) 
     {
-        Aluno aluno01 = new Aluno();
-        Aluno aluno02 = new Aluno();
-        Aluno aluno03 = new Aluno();
+        Aluno[] aluno = new Aluno[3];
         
-        aluno01.nome = "Caio Mekacheski";
-        aluno01.cpf = "24848718941";
-        aluno01.matricula = 150;
-        aluno01.idade = 36;
-        aluno01.nota1 = 6;
-        aluno01.nota2 = 8;
+        for(int i = 0; i < 3; i++)
+        {
+            aluno[i] = new Aluno();
+        }
+        
+        aluno[0].nome = "Caio Mekacheski";
+        aluno[0].cpf = "24848718941";
+        aluno[0].matricula = 150;
+        aluno[0].idade = 36;
+        aluno[0].nota1 = 6;
+        aluno[0].nota2 = 8;
                 
         
-        aluno02.nome = "Letícia Arias";
-        aluno02.cpf = "54398115945";
-        aluno02.matricula = 151;
-        aluno02.idade = 27;
-        aluno02.nota1 = 10;
-        aluno02.nota2 = 9;
+        aluno[1].nome = "Letícia Arias";
+        aluno[1].cpf = "54398115945";
+        aluno[1].matricula = 151;
+        aluno[1].idade = 27;
+        aluno[1].nota1 = 10;
+        aluno[1].nota2 = 9;
         
-        aluno03.nome = "Isadora Araújo";
-        aluno03.cpf = "2148416921";
-        aluno03.matricula = 152;
-        aluno03.idade = 10;
-        aluno03.nota1 = 10;
-        aluno03.nota2 = 10;
+        aluno[2].nome = "Isadora Araújo";
+        aluno[2].cpf = "2148416921";
+        aluno[2].matricula = 152;
+        aluno[2].idade = 10;
+        aluno[2].nota1 = 10;
+        aluno[2].nota2 = 10;
         
         System.out.println("\t\t ALUNOS MATRICULADOS: \n\n");
         
-        aluno01.descrever();
-        aluno02.descrever();
-        aluno03.descrever();
+        aluno[0].descrever();
+        aluno[1].descrever();
+        aluno[2].descrever();
 
 
     }
