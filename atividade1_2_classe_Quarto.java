@@ -1,13 +1,13 @@
-//Atualizado 31/01/2023 10:53
+//Atualizado 31/01/2023 13:08
 package atividade1_2;
 
 public class Quarto 
 {
-    private char id;
+    private int id;
     private String disp;
     private Hospede hospede;
         
-    public void setId(char id)
+    public Quarto(int id)
     {
         this.id = id;
     }
@@ -17,7 +17,7 @@ public class Quarto
         this.hospede = hospede;
     }
     
-    public char getId()
+    public int getId()
     {
         return id;
     }
