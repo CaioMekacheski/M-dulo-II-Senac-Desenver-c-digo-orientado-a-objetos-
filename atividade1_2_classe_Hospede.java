@@ -1,4 +1,4 @@
-
+//Atualizado 31/01/2023
 package atividade1_2;
 
 public class Hospede 
@@ -7,12 +7,22 @@ public class Hospede
     int idade;
    
     
-    public String nomeHospede()
+    public void setNome(String nome)
+    {
+        this.nome = nome;
+    }
+    
+    public void setIdade(int idade)
+    {
+        this.idade = idade;
+    }
+    
+    public String getNomeHospede()
     {
         return nome;
     }
     
-    public int idadeHospede()
+    public int getIdadeHospede()
     {
         return idade;
     }
