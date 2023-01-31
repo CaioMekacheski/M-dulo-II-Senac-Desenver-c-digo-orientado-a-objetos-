@@ -12,8 +12,8 @@ public class Atividade1_2
         //Objetos
         Scanner entrada = new Scanner(System.in);
         
-        Quarto quartoA = new Quarto();
-        Quarto quartoB = new Quarto();
+        Quarto quartoA = new Quarto('A');
+        Quarto quartoB = new Quarto('B');
         
         Hospede cliente1 = new Hospede();
         Hospede cliente2 = new Hospede();
