@@ -1,10 +1,10 @@
-//Atualizado 31/01/2023
+//Atualizado 31/01/2023 10:50
 package atividade1_2;
 
 public class Hospede 
 {
-    String nome;
-    int idade;
+    private String nome;
+    private int idade;
    
     
     public void setNome(String nome)
@@ -17,12 +17,12 @@ public class Hospede
         this.idade = idade;
     }
     
-    public String getNomeHospede()
+    public String getNome()
     {
         return nome;
     }
     
-    public int getIdadeHospede()
+    public int getIdade()
     {
         return idade;
     }
