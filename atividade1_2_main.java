@@ -1,4 +1,4 @@
-
+//Atualizado 31/01/2023 00:45
 package atividade1_2;
 
 import java.util.Scanner;
@@ -32,7 +32,7 @@ public class Atividade1_2
         
         quartoA.hospede = cliente1;
         
-        if(cliente2.idadeHospede() > cliente1.idadeHospede())
+        if(cliente2.getIdadeHospede()> cliente1.getIdadeHospede())
         {
             quartoB.hospede = cliente1;
             quartoA.hospede = cliente2;
@@ -42,14 +42,14 @@ public class Atividade1_2
             quartoB.hospede = cliente2;
         }
         
-        String descontoA = quartoA.checaDesconto(quartoA.hospede.idadeHospede());
-        String descontoB = quartoB.checaDesconto(quartoB.hospede.idadeHospede());
+        String descontoA = quartoA.checaDesconto(quartoA.hospede.getIdadeHospede());
+        String descontoB = quartoB.checaDesconto(quartoB.hospede.getIdadeHospede());
         
         System.out.println("\nQuarto A:");
-        System.out.println("Hospede: " + quartoA.hospede.nomeHospede() + descontoA);
+        System.out.println("Hospede: " + quartoA.hospede.getNomeHospede()+ descontoA);
         
         System.out.println("\nQuarto B:");
-        System.out.println("Hospede: " + quartoB.hospede.nomeHospede() + descontoB);
+        System.out.println("Hospede: " + quartoB.hospede.getNomeHospede() + descontoB);
     }
     
     
