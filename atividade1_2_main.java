@@ -37,7 +37,7 @@ public class Atividade1_2
         quartoA.setHospede(cliente1);
         //Se a idade do hospede 2 for maior que a idade do hospede 1
         //faz a troca de quartos
-        if(cliente2.getIdadeHospede() > cliente1.getIdadeHospede())
+        if(cliente2.getIdade() > cliente1.getIdade())
         {
             quartoB.setHospede(cliente1);
             quartoA.setHospede(cliente2);
@@ -48,14 +48,14 @@ public class Atividade1_2
             quartoB.setHospede(cliente2);
         }
         // Checa se há desconto
-        String descontoA = quartoA.checaDesconto(quartoA.getHospede().getIdadeHospede());
-        String descontoB = quartoB.checaDesconto(quartoB.getHospede().getIdadeHospede());
+        String descontoA = quartoA.checaDesconto(quartoA.getHospede().getIdade());
+        String descontoB = quartoB.checaDesconto(quartoB.getHospede().getIdade());
         //Saída
         System.out.println("\nQuarto A:");
-        System.out.println("Hospede: " + quartoA.getHospede().getNomeHospede()+ descontoA);
+        System.out.println("Hospede: " + quartoA.getHospede().getNome()+ descontoA);
         
         System.out.println("\nQuarto B:");
-        System.out.println("Hospede: " + quartoB.getHospede().getNomeHospede()+ descontoB);
+        System.out.println("Hospede: " + quartoB.getHospede().getNome()+ descontoB);
     }
     
     //Função para limpar o buffer
