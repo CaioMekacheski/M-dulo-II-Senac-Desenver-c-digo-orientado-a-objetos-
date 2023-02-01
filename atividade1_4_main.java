@@ -1,9 +1,8 @@
-
+//Atualizado 01/02/2023 00:45
 package atividade1_4;
 
 import java.util.Scanner;
 import atividade1_2.*;
-
 
 public class Atividade1_4 
 {
@@ -16,77 +15,88 @@ public class Atividade1_4
         Quarto[] quarto = new Quarto[numQuartos];
         Hospede[] hospede = new Hospede[numQuartos];
         
-        for(int j = 0; j < numQuartos; j++)
+        for(int l = 0; l < numQuartos; l++)
         {
-            quarto[j] = new Quarto(j+1);
-            quarto[j].setHospede(null);
+            hospede[l] = new Hospede();
+            hospede[l].setNome(" ");
+            
+            quarto[l] = new Quarto(l+1);
+            quarto[l].setHospede(hospede[l]);
         }
-        
-        int opcao;
-        
-        do
-        {
+
+
+        String opcao;
+
+        do {
             System.out.println(" Digite (1) para novo cadastro (2) para pesquisar (3) para sair");
-            opcao = entrada.nextInt();
-            clearBuffer(entrada);
-        
-            switch(opcao)
+            opcao = entrada.nextLine();
+
+            switch (opcao) 
             {
-                case 1:
-                    System.out.println("\t\tCADASTRO DE HÓSPEDES");
-                    hospede[i] = new Hospede();
-                    System.out.println("Nome do hospede: ");
-                    String nome = entrada.nextLine();
-                    hospede[i].setNome(nome);
-                
-                    System.out.println("Idade do hospede: ");
-                    int idade = entrada.nextInt();
-                    hospede[i].setIdade(idade);
-                    clearBuffer(entrada);
-                
-                    quarto[i].setHospede(hospede[i]);
-                    i++;
-                    continue;
-                
-                case 2:
+                case "1":
+                    if (i < numQuartos) 
+                    {
+                        System.out.println("\t\tCADASTRO DE HÓSPEDES");
+                        hospede[i] = new Hospede();
+                        System.out.println("Nome do hospede: ");
+                        String nome = entrada.nextLine();
+                        hospede[i].setNome(nome);
+
+                        System.out.println("Idade do hospede: ");
+                        int idade = entrada.nextInt();
+                        hospede[i].setIdade(idade);
+                        clearBuffer(entrada);
+
+                        quarto[i].setHospede(hospede[i]);
+                        i++;
+                        
+                    } 
+                    else 
+                    {
+                        System.out.println("Não há mais vagas");
+                    }
+                    break;
+
+                case "2":
                     System.out.println("\t\tPESQUISA DE HÓSPEDES");
                     String pesquisa = entrada.nextLine();
+                    String nomeHospede[] = new String[numQuartos];
                     boolean encontrado = false;
-                
-                    for(int k = 0; k <= numQuartos; k++)
+
+                    for (int k = 0; k < numQuartos; k++) 
                     {
-                        String nomeHospede = quarto[k].getHospede().getNome();
-                        
-                        if(nomeHospede != null)
+                        nomeHospede[k] = quarto[k].getHospede().getNome();
+
+                     
+                        if (pesquisa.equals(nomeHospede[k])) 
                         {
-                            if(pesquisa.equals(nomeHospede))
-                            {
-                                encontrado = true;
-                                System.out.println("O hóspede " + pesquisa +
-                                    " esta hospedado no quarto " + quarto[k].getId());
-                            }
+                            encontrado = true;
+                            System.out.println("O hóspede " + pesquisa
+                                    + " esta hospedado no quarto " + quarto[k].getId());
                         }
-                        
+                            
                         
                     }
-                    
-                    if(encontrado == false)
+
+                    if (encontrado == false) 
                     {
                         System.out.println("Não encontrado.");
+                        
                     }
-                    
-                    
-                case 3:
                     break;
-                    
+
+                case "3":
+                    System.out.println("Encerrando...");
+                    break;
+
                 default:
+                    System.out.println("valor inválido.");
                     break;
-        }
-        
-                
-        }while(opcao != 3);
+            }
+
+        } while (!"3".equals(opcao));
     }
-    
+
     private static void clearBuffer(Scanner scanner) 
     {
         if (scanner.hasNextLine()) 
@@ -94,5 +104,5 @@ public class Atividade1_4
             scanner.nextLine();
         }
     }
-    
+
 }
