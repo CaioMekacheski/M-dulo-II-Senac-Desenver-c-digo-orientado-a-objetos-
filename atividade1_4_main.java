@@ -1,4 +1,4 @@
-//Atualizado 01/02/2023 00:45
+//Atualizado 02/02/2023 19:36
 package atividade1_4;
 
 import java.util.Scanner;
@@ -9,12 +9,15 @@ public class Atividade1_4
 
     public static void main(String[] args) 
     {
-        Scanner entrada = new Scanner(System.in);
+        //Variáveis
         int i = 0;
         int numQuartos = 15;
+        String opcao;
+        //Objetos
+        Scanner entrada = new Scanner(System.in);
         Quarto[] quarto = new Quarto[numQuartos];
         Hospede[] hospede = new Hospede[numQuartos];
-        
+        //Preenchimento dos vetores hospede e quarto
         for(int l = 0; l < numQuartos; l++)
         {
             hospede[l] = new Hospede();
@@ -23,16 +26,16 @@ public class Atividade1_4
             quarto[l] = new Quarto(l+1);
             quarto[l].setHospede(hospede[l]);
         }
-
-
-        String opcao;
-
-        do {
+        
+        do 
+        {
+            //Entrada
             System.out.println(" Digite (1) para novo cadastro (2) para pesquisar (3) para sair");
             opcao = entrada.nextLine();
 
             switch (opcao) 
             {
+                //Se a opção for 1, realiza um novo cadastro se ouver vagas
                 case "1":
                     if (i < numQuartos) 
                     {
@@ -56,7 +59,7 @@ public class Atividade1_4
                         System.out.println("Não há mais vagas");
                     }
                     break;
-
+                //Se for 2, realiza a pequisa pelo nome digitado
                 case "2":
                     System.out.println("\t\tPESQUISA DE HÓSPEDES");
                     String pesquisa = entrada.nextLine();
@@ -67,34 +70,31 @@ public class Atividade1_4
                     {
                         nomeHospede[k] = quarto[k].getHospede().getNome();
 
-                     
                         if (pesquisa.equals(nomeHospede[k])) 
                         {
                             encontrado = true;
                             System.out.println("O hóspede " + pesquisa
                                     + " esta hospedado no quarto " + quarto[k].getId());
-                        }
-                            
-                        
+                        }     
                     }
 
                     if (encontrado == false) 
                     {
                         System.out.println("Não encontrado.");
-                        
                     }
                     break;
-
+                //Caso seja 3, encerra o programa
                 case "3":
                     System.out.println("Encerrando...");
                     break;
-
+                //Caso outro valor seja digitado, exibe uma mensagem de erro
                 default:
                     System.out.println("valor inválido.");
                     break;
             }
 
-        } while (!"3".equals(opcao));
+        } 
+        while (!"3".equals(opcao));
     }
 
     private static void clearBuffer(Scanner scanner) 
