@@ -1,4 +1,4 @@
-//Criado 04/02/2023 21:05
+//Atualizado 10/02/2023 01:15
 package atividade2;
 
 public class PacoteDeViagem 
@@ -68,7 +68,7 @@ public class PacoteDeViagem
     
     public float calculaLucro(float percent, float valor)
     {
-        return valor + (percent * (valor / 100));
+        return percent * (valor / 100);
     }
     
     public float calculaPacote(float hospedagem, float transporte, float lucro, float adicional)
