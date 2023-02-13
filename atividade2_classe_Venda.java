@@ -1,4 +1,4 @@
-//Criado 04/02/2023 21:05
+//Atualizado 13/02/2023 01:25
 package atividade2;
 
 
@@ -55,7 +55,7 @@ public class Venda
         return real / usd;
     }
     
-    public String exibeTotais(float real, float usd)
+    public String exibeTotais(String real, String usd)
     {
         return "Total em reais: R$ " + real + "\n Total em Dólares: US$ " + usd;
     }
