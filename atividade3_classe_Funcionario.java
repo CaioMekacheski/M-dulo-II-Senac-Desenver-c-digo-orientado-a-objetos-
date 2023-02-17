@@ -1,8 +1,8 @@
-//Criado 15/02/2023 19:01
+//Atualizado 15/02/2023 23:53
 
 package atividade3;
 
-public class Funcionario 
+public abstract class Funcionario 
 {
     //Atributos
     public String nome;
@@ -18,8 +18,7 @@ public class Funcionario
     };
     
     //Método
-    public float aplicaAumento(float percent, float pagamento)
-    {
-        return pagamento += percent * (pagamento / 100);
-    }
+    public abstract float aplicaAumento(float percent, float valorBase);
+    public abstract float calculaSalario();
+    public abstract String exibeDados();
 }
