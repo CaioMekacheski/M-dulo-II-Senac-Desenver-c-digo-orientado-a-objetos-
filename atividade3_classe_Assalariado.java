@@ -1,4 +1,4 @@
-//Criado 15/02/19:28
+//Atualizado 15/02/23:53
 package atividade3;
 
 public class Assalariado extends Funcionario 
@@ -16,9 +16,24 @@ public class Assalariado extends Funcionario
         this.diasTrabalhados = diasTrabalhados;
     };
     
-    //Método
+    //Métodos
+    @Override
     public float calculaSalario()
     {
         return diasTrabalhados * (salarioBase / 30);
+    }
+    
+    @Override
+    public float aplicaAumento(float salarioBase, float percentAumento)
+    {
+        return this.salarioBase += percentAumento * (salarioBase / 100);
+    }
+    
+    @Override
+    public String exibeDados()
+    {
+        return "Nome: " + nome + "\n CPF: " + cpf + "\n Endereço: " + 
+                endereco + "\nTelefone: " + fone + "\nSetor: " + setor + "Dias trabalhados: " + diasTrabalhados
+                + "\nSalário base: R$ " + salarioBase + "\nTotal a receber: R$ " + calculaSalario();
     }
 }
