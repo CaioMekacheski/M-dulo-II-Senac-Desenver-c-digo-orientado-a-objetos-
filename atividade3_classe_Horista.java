@@ -1,4 +1,4 @@
-// Atualizado 16/02/2023 23:53
+// Atualizado 22/02/2023 20:04
 package atividade3;
 
 public class Horista extends Funcionario 
@@ -24,16 +24,15 @@ public class Horista extends Funcionario
     }
     
     @Override
-    public float aplicaAumento(float percent, float pagamento)
+    public float aplicaAumento(float percent)
     {
         return this.valorHora += percent * (valorHora / 100);
     }
     
     @Override
-    public String exibeDados()
+    public String exibeInfo()
     {
-        return "Nome: " + nome + "\n CPF: " + cpf + "\n Endereço: " + 
-                endereco + "\nTelefone: " + fone + "\nSetor: " + setor + "Horas trabalhadas: " + horasTrabalhadas
+        return super.exibeDados() + "Horas trabalhadas: " + horasTrabalhadas
                 + "\nValor hora: R$ " + valorHora + "\nTotal a receber: R$ " + calculaSalario();
     }
 }
