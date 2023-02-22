@@ -80,10 +80,10 @@ public class Atividade3
                 
                 for(int j = 0; j <= i; j++)//Uso como referência o indice do laço for principal
                 {
-                    escreva("Funcionário " + (j+1) + ": " + funcionario[j].nome, 1);
+                    escreva("Funcionário " + (j+1) + ": " + funcionario[j].getNome() + 
+                            " Setor: " + funcionario[i].getSetor(), 1);
                 }
                 
-               
                 //Senão pergunta se deseja realizar outro cadastro
                 
                 do
@@ -104,13 +104,12 @@ public class Atividade3
                             break;
 
                             default:
-                                escreva("Opção inválida.\nDigite 'S' ou 'N'", 1);
+                                escreva("\nOpção inválida.\nDigite 'S' ou 'N'", 1);
                                 break;
                     }
                 }
                 while(!"n".equals(opcao) && !"s".equals(opcao));
-                
-                
+                       
             }
         }
         while(continuar);
