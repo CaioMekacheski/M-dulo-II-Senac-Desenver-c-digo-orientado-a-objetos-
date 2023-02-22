@@ -1,4 +1,4 @@
-//Atualizado 15/02/23:53
+//Atualizado 22/02/20:03
 package atividade3;
 
 public class Assalariado extends Funcionario 
@@ -24,16 +24,15 @@ public class Assalariado extends Funcionario
     }
     
     @Override
-    public float aplicaAumento(float salarioBase, float percentAumento)
+    public float aplicaAumento(float percentAumento)
     {
         return this.salarioBase += percentAumento * (salarioBase / 100);
     }
     
     @Override
-    public String exibeDados()
+    public String exibeInfo()
     {
-        return "Nome: " + nome + "\n CPF: " + cpf + "\n Endereço: " + 
-                endereco + "\nTelefone: " + fone + "\nSetor: " + setor + "Dias trabalhados: " + diasTrabalhados
+        return super.exibeDados() + "\nDias trabalhados: " + diasTrabalhados
                 + "\nSalário base: R$ " + salarioBase + "\nTotal a receber: R$ " + calculaSalario();
     }
 }
