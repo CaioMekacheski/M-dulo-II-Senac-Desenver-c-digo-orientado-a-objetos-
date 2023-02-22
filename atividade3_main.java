@@ -1,4 +1,4 @@
-//Atualizado 22/02/2023 19:18
+//Atualizado 22/02/2023 20:11
 package atividade3;
 
 import java.util.Scanner;
@@ -17,7 +17,7 @@ public class Atividade3
         Scanner entrada = new Scanner(System.in);
         Funcionario[] funcionario = new Funcionario[numFunc];
         
-        //Entrada
+        //Cadastro de funcionários
         escreva("\t\tCADASTRO DE FUNCIONÁRIOS", 1);
         do 
         {   
@@ -95,6 +95,7 @@ public class Atividade3
                     switch(opcao)
                     {
                         case "s":
+                            escreva("\n",2);
                             continuar = true;
                             break;
 
@@ -113,7 +114,41 @@ public class Atividade3
             }
         }
         while(continuar);
-       
+        
+        //Lista detalhada de funcionários
+        for(int i = 0; i < numFunc; i++)
+        {
+            if(funcionario[i] != null)
+            {
+                escreva(funcionario[i].exibeInfo(), 1);
+            }
+            
+        }
+        
+        //Aplicação de aumento
+        escreva("AUMENTO DE SALÁRIO", 1);
+        escreva("Digite uma porcentagem para calcular o aumento geral dos funcionários: ", 2);
+        float percent = entrada.nextFloat();
+        clearBuffer(entrada);
+        
+        for(int i = 0; i < numFunc; i++)
+        {
+            if(funcionario[i] != null)
+            {
+                funcionario[i].aplicaAumento(percent);
+            }
+            
+        }
+        
+        //Exibição das informações atualizadas
+        for(int i = 0; i < numFunc; i++)
+        {
+            if(funcionario[i] != null)
+            {
+                escreva(funcionario[i].exibeInfo(), 1);
+            }
+            
+        }
     }
     
     // Função para escrever
