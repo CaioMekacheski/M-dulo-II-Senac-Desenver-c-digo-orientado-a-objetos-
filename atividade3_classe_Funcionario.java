@@ -1,4 +1,4 @@
-//Atualizado 15/02/2023 23:53
+//Atualizado 22/02/2023 19:29
 
 package atividade3;
 
@@ -17,8 +17,27 @@ public abstract class Funcionario
         this.nome = nome;   this.cpf = cpf;   this.endereco = endereco;   this.fone = fone;   this.setor = setor; 
     };
     
-    //Método
+    //Getters
+    public String getNome()
+    {
+        return nome;
+    }
+    
+    public String getSetor()
+    {
+        return setor;
+    }
+    
+    
+    //Métodos
+    public String exibeDados()
+    {
+        return "Nome: " + nome + "\n CPF: " + cpf + "\n Endereço: " + 
+                endereco + "\nTelefone: " + fone + "\nSetor: " + setor;
+    }
+    
+    //Métodos abstratos
     public abstract float aplicaAumento(float percent, float valorBase);
     public abstract float calculaSalario();
-    public abstract String exibeDados();
+    
 }
