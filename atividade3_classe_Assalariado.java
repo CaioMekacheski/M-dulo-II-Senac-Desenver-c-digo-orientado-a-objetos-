@@ -1,9 +1,8 @@
-//Atualizado 22/02/20:03
+//Atualizado 22/02/2023 21:46
 package atividade3;
 
 public class Assalariado extends Funcionario 
 {
-    //Atributos
     public float salarioBase;
     public int diasTrabalhados;
     
@@ -32,7 +31,9 @@ public class Assalariado extends Funcionario
     @Override
     public String exibeInfo()
     {
+        String strSalarioBase = formato.format(salarioBase);
+        String strCalculaSalario = formato.format(calculaSalario());
         return super.exibeDados() + "\nDias trabalhados: " + diasTrabalhados
-                + "\nSalário base: R$ " + salarioBase + "\nTotal a receber: R$ " + calculaSalario();
+                + "\nSalário base: R$ " + strSalarioBase + "\nTotal a receber: R$ " + strCalculaSalario;
     }
 }
