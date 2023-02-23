@@ -1,11 +1,11 @@
-//Atualizado 22/02/2023 20:11
+//Atualizado 22/02/2023 21:40
 package atividade3;
 
 import java.util.Scanner;
 
 public class Atividade3 
 {
-
+    
     public static void main(String[] args) 
     {
         //Variáveis
@@ -34,12 +34,13 @@ public class Atividade3
                 String fone = entrada.nextLine();
                 escreva("Setor: ", 2);
                 String setor = entrada.nextLine();
-                escreva("Tipo de contrato (1)Assalariado (2)Horista: ", 2);
-                String tipoContrato = entrada.nextLine();
+                String tipoContrato;
                 
                 //Cria um novo objeto de acordo com o tipo de contrato
                 do
                 {
+                    escreva("Tipo de contrato (1)Assalariado (2)Horista: ", 2);
+                    tipoContrato = entrada.nextLine();
                     switch(tipoContrato)
                     {
                         //Tipo de contrato assalariado
@@ -52,10 +53,12 @@ public class Atividade3
                             int diasTrabalhados = entrada.nextInt();
                             clearBuffer(entrada);
 
-                            funcionario[i] = new Assalariado(nome, cpf, endereco, fone, setor, salarioBase, diasTrabalhados);
-                        break;
+                            funcionario[i] = new Assalariado(nome, cpf, endereco, 
+                                                                fone, setor, salarioBase, diasTrabalhados);
+                            break;
 
                         case "2":
+                                
                             //Tipo de contrato horista
                             escreva("Tipo de contrato selecionado: Horista", 1);
                             escreva("Valor hora: R$ ", 2);
@@ -66,10 +69,11 @@ public class Atividade3
                             clearBuffer(entrada);
 
                             funcionario[i] = new Horista(nome, cpf, endereco, fone, setor, valorHora, horasTrabalhadas);
-                        break;
+                            break;
 
                         default:
-                            escreva("Opção inválida.\nDigite (1)Para Assalariado\n(2)Para Horista", 1);
+                            escreva("Opção inválida.", 1);
+                            break;
                     }
                     
                 }
@@ -81,7 +85,7 @@ public class Atividade3
                 for(int j = 0; j <= i; j++)//Uso como referência o indice do laço for principal
                 {
                     escreva("Funcionário " + (j+1) + ": " + funcionario[j].getNome() + 
-                            " Setor: " + funcionario[i].getSetor(), 1);
+                            " Setor: " + funcionario[j].getSetor(), 1);
                 }
                 
                 //Senão pergunta se deseja realizar outro cadastro
@@ -126,10 +130,26 @@ public class Atividade3
         }
         
         //Aplicação de aumento
-        escreva("AUMENTO DE SALÁRIO", 1);
-        escreva("Digite uma porcentagem para calcular o aumento geral dos funcionários: ", 2);
-        float percent = entrada.nextFloat();
-        clearBuffer(entrada);
+        escreva("\t\tAUMENTO DE SALÁRIO", 1);
+        escreva("\nDigite uma porcentagem para calcular o aumento geral dos funcionários: ", 2);
+        float percent;
+        String strPercent = entrada.nextLine();
+        
+        //Verifica se o valor é float
+        for(int i = 0; i < strPercent.length(); i++)
+        {
+            char chPercent = strPercent.charAt(i);
+            String caracterPercent = Character.toString(chPercent);
+            
+            if(isFloat(caracterPercent) != true)
+            {
+                escreva("Valor inválido. Digite um valor numérico.", 1);
+                break;
+            }
+        }
+        
+        //Calcula o aumento
+        percent = Float.parseFloat(strPercent);
         
         for(int i = 0; i < numFunc; i++)
         {
@@ -181,4 +201,20 @@ public class Atividade3
         }
     }
     
+    //Função para verificar se um determinado valor é float
+    private static boolean isFloat(String str)
+    {
+        boolean flutuante;
+        
+        if(str.matches("[0-9]") || str.matches("[.]"))
+        {
+            flutuante = true;
+        }
+        else
+        {
+            flutuante = false;
+        }
+        
+        return flutuante;
+    }
 }
