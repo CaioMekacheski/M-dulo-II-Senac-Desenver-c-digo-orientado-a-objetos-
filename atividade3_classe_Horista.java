@@ -1,4 +1,4 @@
-// Atualizado 22/02/2023 20:04
+// Atualizado 22/02/2023 21:48
 package atividade3;
 
 public class Horista extends Funcionario 
@@ -32,7 +32,9 @@ public class Horista extends Funcionario
     @Override
     public String exibeInfo()
     {
+        String strValorHora = formato.format(valorHora);
+        String strCalculaSalario = formato.format(calculaSalario());
         return super.exibeDados() + "Horas trabalhadas: " + horasTrabalhadas
-                + "\nValor hora: R$ " + valorHora + "\nTotal a receber: R$ " + calculaSalario();
+                + "\nValor hora: R$ " + strValorHora + "\nTotal a receber: R$ " + strCalculaSalario;
     }
 }
