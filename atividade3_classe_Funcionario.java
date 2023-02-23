@@ -1,9 +1,12 @@
-//Atualizado 22/02/2023 20:04
+//Atualizado 22/02/2023 21:44
 
 package atividade3;
 
+import java.text.DecimalFormat;
+
 public abstract class Funcionario 
 {
+    DecimalFormat formato = new DecimalFormat("0.00");
     //Atributos
     public String nome;
     public String cpf;
@@ -27,7 +30,6 @@ public abstract class Funcionario
     {
         return setor;
     }
-    
     
     //Métodos
     public String exibeDados()
