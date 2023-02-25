@@ -1,4 +1,4 @@
-//Criado 25/02/2023 18:04
+//Criado 25/02/2023 19:01
 
 package atividade4;
 
@@ -15,5 +15,11 @@ public class Pagamentos
     {
         this.nomeEmpresa = nomeEmpresa;
         this.listImpostos = impostos;
+    }
+    
+    //Getters e Setters
+    public String getNomeEmpresa()
+    {
+        return this.nomeEmpresa;
     }
 }
