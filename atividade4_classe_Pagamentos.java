@@ -1,17 +1,19 @@
-//Criado 25/02/2023 00:53
+//Criado 25/02/2023 18:04
 
 package atividade4;
+
+import java.util.ArrayList;
 
 public class Pagamentos
 {
     //Atributos
     public String nomeEmpresa;
-    public Imposto[] impostos;
+    public ArrayList<Imposto> listImpostos;
     
     //Construtor
-    public Pagamentos(String nomeEmpresa, Imposto[] impostos)
+    public Pagamentos(String nomeEmpresa, ArrayList<Imposto> impostos)
     {
         this.nomeEmpresa = nomeEmpresa;
-        this.impostos = impostos;
+        this.listImpostos = impostos;
     }
 }
