@@ -96,6 +96,7 @@ public class Atividade4
                     
                 default:
                     escreva("\nImposto não cadastrado.", 1);
+                    break;
             }
         }
         while(!tipoImposto.equals("pare"));
