@@ -1,4 +1,4 @@
-//Atualizado 25/02/2023 17:58
+//Atualizado 25/02/2023 19:11
 
 package atividade4;
 
@@ -20,7 +20,7 @@ public class Atividade4
         float frete;
         float seguro;
         float outrasDesp;
-        float baseCalculo;
+        
         
         //Objetos
         Scanner entrada = new Scanner(System.in);
@@ -39,7 +39,7 @@ public class Atividade4
         
         do
         {
-            escreva("\nTipo de imposto (PIS ou IPI)", 2);
+            escreva("\nTipo de imposto (PIS ou IPI)\nDigite 'pare' para encerrar: ", 2);
             tipoImposto = entrada.nextLine();
             
             switch(tipoImposto)
@@ -47,7 +47,7 @@ public class Atividade4
                 case "PIS":
                     escreva("\nCalculo do PIS: ", 1);
              
-                    escreva("Aliquota: (%) ", 2);
+                    escreva("\nAliquota: (%) ", 2);
                     aliquota = entrada.nextFloat();
                     clearBuffer(entrada);
                     
@@ -60,8 +60,8 @@ public class Atividade4
                     clearBuffer(entrada);
                     
                     pis = new Imposto("PIS", aliquota);
-                    pis.calculaValorBasePis(debito, credito);
-                    pis.calculaImposto();
+                    escreva("\nValorBase: R$ " + pis.calculaValorBasePis(debito, credito), 1);
+                    escreva("\nValor PIS: R$" + pis.calculaImposto(), 1);
                     listImpostos.add(pis);
                     break;
                     
@@ -76,22 +76,26 @@ public class Atividade4
                     valor = entrada.nextFloat();
                     clearBuffer(entrada);
                     
-                    escreva("\nFrete: R$ ", 2);
+                    escreva("Frete: R$ ", 2);
                     frete = entrada.nextFloat();
                     clearBuffer(entrada);
                     
-                    escreva("\nSeguro: R$ ", 2);
+                    escreva("Seguro: R$ ", 2);
                     seguro = entrada.nextFloat();
                     clearBuffer(entrada);
                     
-                    escreva("\nOutras despesas: R$ ", 2);
+                    escreva("Outras despesas: R$ ", 2);
                     outrasDesp = entrada.nextFloat();
                     clearBuffer(entrada);
                     
                     ipi = new Imposto("IPI", aliquota);
-                    ipi.calculaValorBaseIpi(valor, frete, seguro, outrasDesp);
-                    ipi.calculaImposto();
+                    escreva("\nValor base: R$ " + ipi.calculaValorBaseIpi(valor, frete, seguro, outrasDesp), 1);
+                    escreva("\nValor IPI: R$ " + ipi.calculaImposto(), 1);
                     listImpostos.add(ipi);
+                    break;
+                    
+                case "pare":
+                    escreva("\nEncerrando...", 1);
                     break;
                     
                 default:
@@ -101,6 +105,8 @@ public class Atividade4
         }
         while(!tipoImposto.equals("pare"));
         
+        escreva("LISTA DE PAGAMENTOS", 1);
+        escreva("Empresa: " + pagamento.getNomeEmpresa(), 1);
         
         for(int i = 0; i < pagamento.listImpostos.size(); i++)
         {
@@ -113,7 +119,7 @@ public class Atividade4
     // Função para escrever
     // Modo 1 adiciona quebra de linha
     // Modo 2 não adiciona quebra de linha
-    private static void escreva(String texto, int modo)
+    public static void escreva(String texto, int modo)
     {
         switch(modo)
         {
