@@ -1,17 +1,19 @@
-//Criado 24/02/2023 17:08
+//Criado 25/02/2023 00:53
 package atividade4;
 
-public class Pis implements Imposto
+public class Imposto implements interfaceImposto
 {
     //Atributos
-    public String nome = "PIS";
-    public float valorImposto;
+    public String nome;
     public float valorBase;
     public float aliquota;
+    public float valorImposto;
     
     //Construtor
-    public Pis(float aliquota)
+    public Imposto(String nome, float valorBase, float aliquota)
     {
+        this.nome = nome;
+        this.valorBase = valorBase;
         this.aliquota = aliquota;
     }
     
@@ -36,16 +38,17 @@ public class Pis implements Imposto
         return this.aliquota;
     }
     
+    public void setNome(String nome)
+    {
+        this.nome = nome;
+    }
+    
     public void setAliquota(float aliquota)
     {
         this.aliquota = aliquota;
     }
     
     //Métodos
-    public float calculaBase(float debito, float credito)
-    {
-        return valorBase = debito - credito;
-    }
     
     @Override
     public float calculaImposto()
@@ -56,8 +59,8 @@ public class Pis implements Imposto
     @Override
     public String exibeDados()
     {
-        return "\nPIS (Programa de Integração Social)" + 
-               "\nValor base (débito - crédito): R$ " + valorBase +
+        return "\n" + nome +
+               "\nValor base : R$ " + valorBase +
                "\nValor da aliquota: " + aliquota + "%" +
                "\nValor do imposto: R$ " + valorImposto;
     }
