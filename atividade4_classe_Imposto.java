@@ -1,4 +1,4 @@
-//Criado 25/02/2023 00:53
+//Criado 25/02/2023 17:59
 package atividade4;
 
 public class Imposto implements interfaceImposto
@@ -10,10 +10,9 @@ public class Imposto implements interfaceImposto
     public float valorImposto;
     
     //Construtor
-    public Imposto(String nome, float valorBase, float aliquota)
+    public Imposto(String nome, float aliquota)
     {
         this.nome = nome;
-        this.valorBase = valorBase;
         this.aliquota = aliquota;
     }
     
@@ -48,12 +47,27 @@ public class Imposto implements interfaceImposto
         this.aliquota = aliquota;
     }
     
+    public void setValorBase(float valorBase)
+    {
+        this.valorBase = valorBase;
+    }
+    
     //Métodos
+    public float calculaValorBasePis(float debito, float credito)
+    {
+        return valorBase = debito - credito;
+    }
+    
+    public float calculaValorBaseIpi(float valor, float frete, float seguro, float outrasDesp)
+    {
+        return valorBase = valor + frete + seguro + outrasDesp; 
+    }
     
     @Override
     public float calculaImposto()
     {
-       return valorImposto =  aliquota * (valorBase / 100);
+        
+        return valorImposto =  aliquota * (valorBase / 100);
     }
    
     @Override
