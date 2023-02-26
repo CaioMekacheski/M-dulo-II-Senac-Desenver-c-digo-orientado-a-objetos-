@@ -1,4 +1,4 @@
-//Atualizado 25/02/2023 19:11
+//Atualizado 26/02/2023 16:14
 
 package atividade4;
 
@@ -21,7 +21,6 @@ public class Atividade4
         float seguro;
         float outrasDesp;
         
-        
         //Objetos
         Scanner entrada = new Scanner(System.in);
         Pagamentos pagamento;
@@ -29,75 +28,64 @@ public class Atividade4
         Imposto ipi;
         ArrayList<Imposto> listImpostos;
         
+        //Entrada
         escreva("\t\tCADASTRO DE PAGAMENTOS", 1);
         escreva("\nNome da empresa: ", 2);
-            nome = entrada.nextLine();
-            
-            listImpostos = new ArrayList<>();
-            
-            pagamento = new Pagamentos(nome, listImpostos);
         
+        nome = entrada.nextLine();           
+        listImpostos = new ArrayList<>();
+        
+        //Cria lista de pagamentos
+        pagamento = new Pagamentos(nome, listImpostos);
+        
+        //Recebe os dados até que 'pare' seja digitado
         do
         {
+            //Seleciona o tipo de imposto
             escreva("\nTipo de imposto (PIS ou IPI)\nDigite 'pare' para encerrar: ", 2);
             tipoImposto = entrada.nextLine();
             
+            //Recebe os dados, verifica os dados, cria o objeto e calcula seus valores
             switch(tipoImposto)
             {
+                //Processamento PIS
                 case "PIS":
                     escreva("\nCalculo do PIS: ", 1);
-             
-                    escreva("\nAliquota: (%) ", 2);
-                    aliquota = entrada.nextFloat();
-                    clearBuffer(entrada);
-                    
-                    escreva("Débito: R$ ", 2);
-                    debito = entrada.nextFloat();
-                    clearBuffer(entrada);
-                    
-                    escreva("Crédito: R$ ", 2);
-                    credito = entrada.nextFloat();
-                    clearBuffer(entrada);
-                    
+                    //Recebe os dados
+                    aliquota = pagamento.entradaValor("\nAliquota: (%) ");                   
+                    debito = pagamento.entradaValor("Débito: R$ ");
+                    credito = pagamento.entradaValor("Crédito: R$ ");
+                    //Cria o objeto
                     pis = new Imposto("PIS", aliquota);
-                    escreva("\nValorBase: R$ " + pis.calculaValorBasePis(debito, credito), 1);
+                    escreva("\nValor base: R$ " + pis.calculaValorBasePis(debito, credito), 1);
                     escreva("\nValor PIS: R$" + pis.calculaImposto(), 1);
-                    listImpostos.add(pis);
-                    break;
+                    //Adiciona o objeto a lista de pagamentos
+                    pagamento.getlistImpostos().add(pis);
                     
+                    break;
+                
+                //Processamento IPI    
                 case "IPI":
                     escreva("\nCalculo do IPI: ", 1);
-                    
-                    escreva("\nAliquota: (%) ", 2);
-                    aliquota = entrada.nextFloat();
-                    clearBuffer(entrada);
-                    
-                    escreva("Valor do produto: R$ ", 2);
-                    valor = entrada.nextFloat();
-                    clearBuffer(entrada);
-                    
-                    escreva("Frete: R$ ", 2);
-                    frete = entrada.nextFloat();
-                    clearBuffer(entrada);
-                    
-                    escreva("Seguro: R$ ", 2);
-                    seguro = entrada.nextFloat();
-                    clearBuffer(entrada);
-                    
-                    escreva("Outras despesas: R$ ", 2);
-                    outrasDesp = entrada.nextFloat();
-                    clearBuffer(entrada);
-                    
+                    //Recebe os dados
+                    aliquota = pagamento.entradaValor("\nAliquota: (%) ");                   
+                    valor = pagamento.entradaValor("Valor do produto: R$ ");                  
+                    frete = pagamento.entradaValor("Frete: R$ ");                  
+                    seguro = pagamento.entradaValor("Seguro: R$ ");                   
+                    outrasDesp = pagamento.entradaValor("Outras despesas: R$ ");
+                    //Cria o objeto
                     ipi = new Imposto("IPI", aliquota);
                     escreva("\nValor base: R$ " + ipi.calculaValorBaseIpi(valor, frete, seguro, outrasDesp), 1);
                     escreva("\nValor IPI: R$ " + ipi.calculaImposto(), 1);
-                    listImpostos.add(ipi);
-                    break;
+                    //Adiciona o objeto a lista de pagamentos
+                    pagamento.getlistImpostos().add(ipi);
                     
+                    break;
+                //Encerra o cadastro    
                 case "pare":
                     escreva("\nEncerrando...", 1);
                     break;
-                    
+                //Adverte se o tipo de imposto não estiver cadastrado    
                 default:
                     escreva("\nImposto não cadastrado.", 1);
                     break;
@@ -105,15 +93,8 @@ public class Atividade4
         }
         while(!tipoImposto.equals("pare"));
         
-        escreva("LISTA DE PAGAMENTOS", 1);
-        escreva("Empresa: " + pagamento.getNomeEmpresa(), 1);
-        
-        for(int i = 0; i < pagamento.listImpostos.size(); i++)
-        {
-            escreva(pagamento.listImpostos.get(i).exibeDados(), 1);
-        }
-        
-         
+        //Saída
+        pagamento.listPagamentos();       
     }
     
     // Função para escrever
@@ -138,12 +119,29 @@ public class Atividade4
     }
     
     //Função para limpar o buffer
-    private static void clearBuffer(Scanner scanner) 
+    public static void clearBuffer(Scanner scanner) 
     {
         if (scanner.hasNextLine()) 
         {
             scanner.nextLine();
         }
+    }
+    
+    //Função para verificar se um determinado valor é float
+    public static boolean isFloat(String str)
+    {
+        boolean flutuante;
+        
+        if(str.matches("[0-9]") || str.matches("[.]"))
+        {
+            flutuante = true;
+        }
+        else
+        {
+            flutuante = false;
+        }
+        
+        return flutuante;
     }
     
 }
