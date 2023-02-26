@@ -1,13 +1,15 @@
-//Criado 25/02/2023 19:06
+//Criado 26/02/2023 17:00
 package atividade4;
+
+import static atividade4.Atividade4.formato;
 
 public class Imposto implements interfaceImposto
 {
     //Atributos
-    public String nome;
-    public float valorBase;
-    public float aliquota;
-    public float valorImposto;
+    private String nome;
+    private float valorBase;
+    private float aliquota;
+    private float valorImposto;
     
     //Construtor
     public Imposto(String nome, float aliquota)
@@ -59,7 +61,7 @@ public class Imposto implements interfaceImposto
     }
     
     @Override
-    public float calculaImposto()
+public float calculaImposto()
     {
         return valorImposto =  aliquota * (valorBase / 100);
     }
@@ -67,9 +69,12 @@ public class Imposto implements interfaceImposto
     @Override
     public String exibeDados()
     {
+        String strValorBase = formato.format(valorBase);
+        String strAliquota = formato.format(aliquota);
+        String strValorImposto= formato.format(valorImposto);
         return "\n" + nome +
-               "\nValor base : R$ " + valorBase +
-               "\nValor da aliquota: " + aliquota + "%" +
-               "\nValor do imposto: R$ " + valorImposto;
+               "\nValor base : R$ " + strValorBase +
+               "\nValor da aliquota: " + strAliquota + "%" +
+               "\nValor do imposto: R$ " + strValorImposto;
     }
 }
