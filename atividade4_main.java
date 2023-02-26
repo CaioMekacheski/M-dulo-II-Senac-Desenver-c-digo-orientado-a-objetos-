@@ -1,13 +1,15 @@
-//Atualizado 26/02/2023 16:14
+//Atualizado 26/02/2023 17:00
 
 package atividade4;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class Atividade4 
 {
-
+    static DecimalFormat formato = new DecimalFormat("0.00");
+    
     public static void main(String[] args) 
     {
         //Variáveis
@@ -56,9 +58,13 @@ public class Atividade4
                     debito = pagamento.entradaValor("Débito: R$ ");
                     credito = pagamento.entradaValor("Crédito: R$ ");
                     //Cria o objeto
-                    pis = new Imposto("PIS", aliquota);
-                    escreva("\nValor base: R$ " + pis.calculaValorBasePis(debito, credito), 1);
-                    escreva("\nValor PIS: R$" + pis.calculaImposto(), 1);
+                    pis = new Imposto("PIS (Programa de Integração Social)", aliquota);
+                    //Calcula e formata os valores
+                    String strValorBasePis = formato.format(pis.calculaValorBasePis(debito, credito));
+                    String strValorPIS = formato.format(pis.calculaImposto());
+                    //Exibe os valores
+                    escreva("\nValor base: R$ " + strValorBasePis, 1);
+                    escreva("\nValor PIS: R$" + strValorPIS, 1);
                     //Adiciona o objeto a lista de pagamentos
                     pagamento.getlistImpostos().add(pis);
                     
@@ -74,9 +80,14 @@ public class Atividade4
                     seguro = pagamento.entradaValor("Seguro: R$ ");                   
                     outrasDesp = pagamento.entradaValor("Outras despesas: R$ ");
                     //Cria o objeto
-                    ipi = new Imposto("IPI", aliquota);
-                    escreva("\nValor base: R$ " + ipi.calculaValorBaseIpi(valor, frete, seguro, outrasDesp), 1);
-                    escreva("\nValor IPI: R$ " + ipi.calculaImposto(), 1);
+                    ipi = new Imposto("IPI (Imposto sobre Produto Industrializado", aliquota);
+                    //Calcula e formata os valores
+                    String strValorBaseIpi = formato.format(ipi.calculaValorBaseIpi(valor, frete, 
+                                                                                                   seguro, outrasDesp));
+                    String strValorIpi = formato.format(ipi.calculaImposto());
+                    //Exibe os valores
+                    escreva("\nValor base: R$ " + strValorBaseIpi, 1);
+                    escreva("\nValor IPI: R$ " + strValorIpi, 1);
                     //Adiciona o objeto a lista de pagamentos
                     pagamento.getlistImpostos().add(ipi);
                     
